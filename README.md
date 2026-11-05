@@ -7,6 +7,42 @@ sit at the lower sides, with today's Celsius high/low below them.
 Primary device: **Forerunner 570 47 mm**. Additional build targets are Forerunner
 570 42 mm, 965, and 970; device testing is still required for each.
 
+The companion shares your day: morning coffee, quiet moments, little stretches,
+running and strength-themed reactions, then a sleepy evening. Everything happens
+automatically, with brief gestures and supportive celebrations after activity.
+
+## A day with your companion
+
+| Morning coffee | Quiet daytime |
+| :---: | :---: |
+| <img src="docs/design/scene-coffee.png" width="240" alt="Companion holding its morning coffee on the watch face"> | <img src="docs/design/preview-idle.png" width="240" alt="Companion standing comfortably in its tiny environment"> |
+| A cozy coffee break, with an occasional sip. | Blinks, stretches, and sometimes notices you looking. |
+| **Running theme** | **Strength theme** |
+| <img src="docs/design/preview-running.png" width="240" alt="Companion in a running pose"> | <img src="docs/design/preview-strength.png" width="240" alt="Companion lifting a small dumbbell"> |
+| Recorded runs bring running-themed poses and a celebration. | Recorded Training sessions bring strength-themed poses under the personal-use convention. |
+
+These are screenshots from the actual renderer in Garmin's 570 simulator, using
+fixed demonstration values. Workout reactions appear when you return to the
+watch face. After the celebration, the companion drinks water, stretches, and
+rests before returning to its routine.
+
+Always-on keeps just the dim time and a small resting companion:
+
+<img src="docs/design/simulator-always-on.png" width="200" alt="Minimal always-on face with a small dim clock and resting companion">
+
+## Performance expectations
+
+The 570 simulator benchmark exercised **643 draws**, including every pose,
+always-on mode, and 240 sprite changes. Normal cached draws averaged **22.1 ms**;
+always-on draws averaged **5.1 ms**. Sampled application memory peaked at
+**22.7 KiB out of 123.8 KiB**. The bounded run completed without errors.
+
+These results support the intended brief pose changes, roughly 600 ms apart;
+they are not measurements of physical-watch responsiveness or battery life.
+Real workout-history access is the main unmeasured source of possible delays.
+See the [performance report](docs/design/performance.md) for the method, outliers,
+and remaining hardware checks.
+
 ## Build and run
 
 Install Garmin's [Connect IQ SDK Manager](https://developer.garmin.com/connect-iq/sdk/)
@@ -20,6 +56,8 @@ export DEVELOPER_KEY=/absolute/path/to/your/garmin/developer_key
 ./scripts/run.sh                    # build and launch in Garmin's simulator
 ./scripts/test.sh                   # compile and execute behavior tests
 ./scripts/build.sh fr57042mm        # optional smaller-screen target
+python3 scripts/benchmark.py        # simulator-only render/memory benchmark
+python3 scripts/build-previews.py   # documentation scenes with sample values
 ```
 
 The existing local signing key is the default when available. Its contents are
@@ -29,6 +67,11 @@ The sideloadable file is `build/LittleCompanion-fr57047mm.prg`. Transfer it to t
 watch's `GARMIN/APPS` directory using your normal Garmin USB/MTP workflow, then
 choose **Little Companion** in the watch-face picker. This project does not publish
 or install itself on the watch.
+
+On macOS, the watch's MTP storage does not appear as a normal Finder drive. Use
+[OpenMTP](https://openmtp.ganeshrvel.com/) and select **MTP** in the watch's USB Mode
+setting if needed. Copy only the normal release `.prg`, not a `performance-` or
+`preview-` build.
 
 ## Behavior
 

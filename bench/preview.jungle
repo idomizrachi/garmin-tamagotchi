@@ -1,0 +1,4 @@
+project.manifest = preview-manifest.xml
+base.sourcePath = ../source;.
+base.resourcePath = ../resources;../build/preview-resources
+base.excludeAnnotations = test
