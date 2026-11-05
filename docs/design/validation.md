@@ -61,3 +61,19 @@ Connect IQ release is claimed. The 965 and 970 have build validation only.
 - `simulator-always-on.png`: sparse low-power rendering used for the pixel count.
 
 Both use simulator-provided sample data rather than the wearer's actual readings.
+
+## On-watch readability follow-up
+
+The wearer reported that the initial physical-watch build felt responsive, but
+the supporting text was too small. The follow-up keeps the main clock's font
+and position unchanged while increasing the date from 23 to 30 nominal pixels,
+labels from 20 to 26 (now bold), numeric fields from 35 to 46, and the always-on
+clock from 54 to 68. Labels also use a brighter muted color. Scenery and spacing
+were adjusted to keep grass and pebbles clear of the wider data values.
+
+All four release targets build successfully after this change. The normal
+47 mm release was visually inspected in a fresh simulator session. The preview
+entry point now honors low-power transitions as well, rather than trying to
+leave a full face visible during always-on mode. The earlier screenshots and
+performance measurements describe the initial font sizes; larger text still
+needs the wearer's on-watch readability assessment.

@@ -3,6 +3,7 @@ import Toybox.Graphics;
 import Toybox.Time;
 import Toybox.Time.Gregorian;
 import Toybox.WatchUi;
+import Toybox.System;
 
 // Documentation-only scenes using the real renderer and clearly synthetic data.
 class PreviewApp extends Application.AppBase {
@@ -25,6 +26,7 @@ class PreviewView extends WatchUi.WatchFace {
     private var model;
     private var data;
     private var pose = 0;
+    private var lowPower = false;
     function initialize() {
         WatchFace.initialize(); renderer = new CompanionRenderer();
         model = new CompanionModel(); data = new CompanionData();
@@ -33,9 +35,12 @@ class PreviewView extends WatchUi.WatchFace {
         data.steps = 6420; data.runKm = 24.6; data.high = 24; data.low = 17;
         data.condition = 0; data.observation = Time.now().value();
     }
+    function onEnterSleep() as Void { lowPower = true; WatchUi.requestUpdate(); }
+    function onExitSleep() as Void { lowPower = false; WatchUi.requestUpdate(); }
     function onUpdate(dc as Graphics.Dc) as Void {
         var now = Time.now();
-        renderer.draw(dc, new PreviewClock(pose), Gregorian.info(now, Time.FORMAT_SHORT),
-            model, data, pose, now.value(), false);
+        var clock = lowPower ? System.getClockTime() : new PreviewClock(pose);
+        renderer.draw(dc, clock, Gregorian.info(now, Time.FORMAT_SHORT),
+            model, data, pose, now.value(), lowPower);
     }
 }

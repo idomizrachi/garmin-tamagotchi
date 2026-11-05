@@ -7,7 +7,7 @@ class CompanionRenderer {
     private var spriteId = -1;
     private var aod;
     private const WHITE = 0xEEF5F0;
-    private const MUTED = 0x839A96;
+    private const MUTED = 0xAABCB4;
     private const TEAL = 0x5EB8A9;
     private var scale = 1.0;
     private var fontWidth = 0;
@@ -40,23 +40,23 @@ class CompanionRenderer {
         drawWeatherScene(dc, data.sceneCondition(now), clock.hour);
 
         text(dc, 98, 311, valueFont, data.runKm == null ? "—" : data.runKm.format("%.1f"), WHITE);
-        text(dc, 98, 338, labelFont, "km / week", MUTED);
+        text(dc, 98, 343, labelFont, "km / week", MUTED);
         text(dc, 356, 311, valueFont, stepsText(data.steps), WHITE);
-        text(dc, 356, 338, labelFont, "steps", MUTED);
-        text(dc, 227, 375, labelFont, "HI / LO  °C", MUTED);
+        text(dc, 356, 343, labelFont, "steps", MUTED);
+        text(dc, 227, 374, labelFont, "HI / LO  °C", MUTED);
         var weather = temperature(data.high) + " / " + temperature(data.low);
-        text(dc, 227, 402, valueFont, weather, WHITE);
-        accent(dc, 98, 354, 48); accent(dc, 356, 354, 48); accent(dc, 227, 428, 56);
+        text(dc, 227, 408, valueFont, weather, WHITE);
+        accent(dc, 98, 363, 48); accent(dc, 356, 363, 48); accent(dc, 227, 435, 56);
     }
 
     private function prepareFonts(width) as Void {
         if (fontWidth == width) { return; }
         fontWidth = width;
         clockFont = font("RobotoCondensedBold", 132, Graphics.FONT_NUMBER_HOT);
-        dateFont = font("RobotoCondensedBold", 23, Graphics.FONT_XTINY);
-        labelFont = font("RobotoCondensedRegular", 20, Graphics.FONT_XTINY);
-        valueFont = font("RobotoCondensedBold", 35, Graphics.FONT_SMALL);
-        aodFont = font("RobotoCondensedRegular", 54, Graphics.FONT_XTINY);
+        dateFont = font("RobotoCondensedBold", 30, Graphics.FONT_XTINY);
+        labelFont = font("RobotoCondensedBold", 26, Graphics.FONT_XTINY);
+        valueFont = font("RobotoCondensedBold", 46, Graphics.FONT_SMALL);
+        aodFont = font("RobotoCondensedRegular", 68, Graphics.FONT_XTINY);
     }
 
     private function font(face, size, fallback) {
@@ -91,19 +91,19 @@ class CompanionRenderer {
         dc.fillRectangle(px(310), px(262), px(5), px(4));
         dc.setColor(night ? 0x264438 : 0x426B52, Graphics.COLOR_TRANSPARENT);
         // Two little grass clumps beside the companion's permanent spot.
-        dc.fillRectangle(px(139), px(309), px(3), px(14));
-        dc.fillRectangle(px(134), px(313), px(3), px(7));
-        dc.fillRectangle(px(137), px(317), px(9), px(6));
-        dc.fillRectangle(px(144), px(311), px(3), px(8));
-        dc.fillRectangle(px(311), px(314), px(3), px(9));
-        dc.fillRectangle(px(307), px(311), px(3), px(7));
-        dc.fillRectangle(px(309), px(319), px(9), px(4));
+        dc.fillRectangle(px(153), px(309), px(3), px(14));
+        dc.fillRectangle(px(148), px(313), px(3), px(7));
+        dc.fillRectangle(px(151), px(317), px(9), px(6));
+        dc.fillRectangle(px(158), px(311), px(3), px(8));
+        dc.fillRectangle(px(292), px(314), px(3), px(9));
+        dc.fillRectangle(px(288), px(311), px(3), px(7));
+        dc.fillRectangle(px(290), px(319), px(9), px(4));
         // Muted pebbles connect the sparse ground line to the field arcs.
         dc.setColor(night ? 0x333C38 : 0x59635A, Graphics.COLOR_TRANSPARENT);
-        dc.fillRectangle(px(123), px(324), px(9), px(3));
-        dc.fillRectangle(px(125), px(322), px(5), px(2));
-        dc.fillRectangle(px(320), px(324), px(10), px(3));
-        dc.fillRectangle(px(322), px(321), px(5), px(3));
+        dc.fillRectangle(px(143), px(331), px(9), px(3));
+        dc.fillRectangle(px(145), px(329), px(5), px(2));
+        dc.fillRectangle(px(302), px(331), px(10), px(3));
+        dc.fillRectangle(px(304), px(328), px(5), px(3));
         dc.setColor(night ? 0x20362D : 0x314E40, Graphics.COLOR_TRANSPARENT);
         dc.fillRectangle(px(169), px(329), px(5), px(2));
         dc.fillRectangle(px(278), px(330), px(8), px(2));
