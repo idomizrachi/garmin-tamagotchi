@@ -70,6 +70,8 @@ and position unchanged while increasing the date from 23 to 30 nominal pixels,
 labels from 20 to 26 (now bold), numeric fields from 35 to 46, and the always-on
 clock from 54 to 68. Labels also use a brighter muted color. Scenery and spacing
 were adjusted to keep grass and pebbles clear of the wider data values.
+The small decorative arcs beneath the three fields were subsequently removed
+at the wearer's request.
 
 All four release targets build successfully after this change. The normal
 47 mm release was visually inspected in a fresh simulator session. The preview

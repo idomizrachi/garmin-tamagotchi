@@ -8,7 +8,6 @@ class CompanionRenderer {
     private var aod;
     private const WHITE = 0xEEF5F0;
     private const MUTED = 0xAABCB4;
-    private const TEAL = 0x5EB8A9;
     private var scale = 1.0;
     private var fontWidth = 0;
     private var clockFont;
@@ -46,7 +45,6 @@ class CompanionRenderer {
         text(dc, 227, 374, labelFont, "HI / LO  °C", MUTED);
         var weather = temperature(data.high) + " / " + temperature(data.low);
         text(dc, 227, 408, valueFont, weather, WHITE);
-        accent(dc, 98, 363, 48); accent(dc, 356, 363, 48); accent(dc, 227, 435, 56);
     }
 
     private function prepareFonts(width) as Void {
@@ -120,14 +118,6 @@ class CompanionRenderer {
     private function text(dc, x, y, font, value, color) as Void {
         dc.setColor(color, Graphics.COLOR_TRANSPARENT);
         dc.drawText(px(x), px(y), font, value, Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
-    }
-
-    private function accent(dc, x, y, width) as Void {
-        dc.setColor(TEAL, Graphics.COLOR_TRANSPARENT);
-        // A shallow three-segment curve follows the lower circular face.
-        dc.drawLine(px(x - width/2), px(y - 3), px(x - width/4), px(y));
-        dc.drawLine(px(x - width/4), px(y), px(x + width/4), px(y));
-        dc.drawLine(px(x + width/4), px(y), px(x + width/2), px(y - 3));
     }
 
     private function temperature(value) {
