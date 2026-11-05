@@ -2,14 +2,28 @@
 
 A personal Garmin watch face built around one cozy teal hooded creature. Large
 24-hour time and date sit above the companion; running kilometres and daily steps
-sit at the lower sides, with today's Celsius high/low below them.
+flank the companion, with today's Celsius high/low below it. The supporting
+text is enlarged for readability, and the data fields have no decorative arcs.
 
 Primary device: **Forerunner 570 47 mm**. Additional build targets are Forerunner
-570 42 mm, 965, and 970; device testing is still required for each.
+570 42 mm, 965, and 970. The 570 47 mm has been sideloaded and tried on the
+physical watch; the other models are build targets awaiting device testing.
 
 The companion shares your day: morning coffee, quiet moments, little stretches,
 running and strength-themed reactions, then a sleepy evening. Everything happens
 automatically, with brief gestures and supportive celebrations after activity.
+
+## Current watch-face layout
+
+<img src="docs/design/preview-raised-fields.png" width="360" alt="Current watch face: large time and date above a teal hooded companion, weekly running kilometres on its left, daily steps on its right, and Celsius high and low below">
+
+- Large 24-hour clock, with the date above it.
+- Weekly running distance in kilometres, counted Sunday–Saturday.
+- Daily steps and today's forecast high/low in °C.
+- A small companion on a sparse ground line, with lightweight environmental details.
+
+This is the latest layout, also copied to the physical Forerunner 570 47 mm.
+The screenshot uses demonstration readings rather than personal activity data.
 
 ## A day with your companion
 
@@ -22,7 +36,9 @@ automatically, with brief gestures and supportive celebrations after activity.
 | Recorded runs bring running-themed poses and a celebration. | Recorded Training sessions bring strength-themed poses under the personal-use convention. |
 
 These are screenshots from the actual renderer in Garmin's 570 simulator, using
-fixed demonstration values. Workout reactions appear when you return to the
+fixed demonstration values. Coffee, running, and strength captures show an earlier
+layout with smaller text and field arcs; the current layout above applies to all
+of these scenes. Workout reactions appear when you return to the
 watch face. After the celebration, the companion drinks water, stretches, and
 rests before returning to its routine.
 
@@ -37,8 +53,10 @@ always-on mode, and 240 sprite changes. Normal cached draws averaged **22.1 ms**
 always-on draws averaged **5.1 ms**. Sampled application memory peaked at
 **22.7 KiB out of 123.8 KiB**. The bounded run completed without errors.
 
-These results support the intended brief pose changes, roughly 600 ms apart;
-they are not measurements of physical-watch responsiveness or battery life.
+These measurements come from the earlier layout and font sizes. They support
+the intended brief pose changes, roughly 600 ms apart. The wearer reported that
+the face felt responsive on the physical 570 47 mm; battery life and redraw times
+have not been measured on hardware.
 Real workout-history access is the main unmeasured source of possible delays.
 See the [performance report](docs/design/performance.md) for the method, outliers,
 and remaining hardware checks.
@@ -64,7 +82,7 @@ The existing local signing key is the default when available. Its contents are
 never copied into the project. SDK downloads and build outputs are ignored by Git.
 
 The sideloadable file is `build/LittleCompanion-fr57047mm.prg`. Transfer it to the
-watch's `GARMIN/APPS` directory using your normal Garmin USB/MTP workflow, then
+watch's `GARMIN/Apps` directory using your normal Garmin USB/MTP workflow, then
 choose **Little Companion** in the watch-face picker. This project does not publish
 or install itself on the watch.
 
