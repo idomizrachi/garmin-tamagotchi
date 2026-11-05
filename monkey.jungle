@@ -1,0 +1,5 @@
+project.manifest = manifest.xml
+base.sourcePath = source;tests
+base.resourcePath = resources
+base.excludeAnnotations = test
+fr57042mm.resourcePath = resources-small;resources/strings;resources/settings

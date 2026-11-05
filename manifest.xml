@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<iq:manifest xmlns:iq="http://www.garmin.com/xml/connectiq" version="3">
+  <iq:application id="942dab86741341de9959e0934334b786" type="watchface" name="@Strings.AppName" entry="CompanionApp" launcherIcon="@Drawables.LauncherIcon" minSdkVersion="4.2.1">
+    <iq:products>
+      <iq:product id="fr57047mm"/>
+      <iq:product id="fr57042mm"/>
+      <iq:product id="fr965"/>
+      <iq:product id="fr970"/>
+    </iq:products>
+    <iq:permissions>
+      <iq:uses-permission id="UserProfile"/>
+      <iq:uses-permission id="ComplicationSubscriber"/>
+    </iq:permissions>
+    <iq:languages><iq:language>eng</iq:language></iq:languages>
+    <iq:barrels/>
+  </iq:application>
+</iq:manifest>

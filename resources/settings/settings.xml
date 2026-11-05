@@ -1,0 +1,41 @@
+<settings>
+  <setting propertyKey="@Properties.WakeMinute" title="@Strings.WakeLabel">
+    <settingConfig type="list">
+      <listEntry value="300">@Strings.Time300</listEntry>
+      <listEntry value="330">@Strings.Time330</listEntry>
+      <listEntry value="360">@Strings.Time360</listEntry>
+      <listEntry value="390">@Strings.Time390</listEntry>
+      <listEntry value="420">@Strings.Time420</listEntry>
+      <listEntry value="450">@Strings.Time450</listEntry>
+      <listEntry value="480">@Strings.Time480</listEntry>
+      <listEntry value="510">@Strings.Time510</listEntry>
+      <listEntry value="540">@Strings.Time540</listEntry>
+      <listEntry value="570">@Strings.Time570</listEntry>
+      <listEntry value="600">@Strings.Time600</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.SleepyMinute" title="@Strings.SleepyLabel">
+    <settingConfig type="list">
+      <listEntry value="1080">@Strings.Time1080</listEntry>
+      <listEntry value="1110">@Strings.Time1110</listEntry>
+      <listEntry value="1140">@Strings.Time1140</listEntry>
+      <listEntry value="1170">@Strings.Time1170</listEntry>
+      <listEntry value="1200">@Strings.Time1200</listEntry>
+      <listEntry value="1230">@Strings.Time1230</listEntry>
+      <listEntry value="1260">@Strings.Time1260</listEntry>
+      <listEntry value="1290">@Strings.Time1290</listEntry>
+      <listEntry value="1320">@Strings.Time1320</listEntry>
+    </settingConfig>
+  </setting>
+  <setting propertyKey="@Properties.BedMinute" title="@Strings.BedLabel">
+    <settingConfig type="list">
+      <listEntry value="1260">@Strings.Time1260</listEntry>
+      <listEntry value="1290">@Strings.Time1290</listEntry>
+      <listEntry value="1320">@Strings.Time1320</listEntry>
+      <listEntry value="1350">@Strings.Time1350</listEntry>
+      <listEntry value="1365">@Strings.Time1365</listEntry>
+      <listEntry value="1380">@Strings.Time1380</listEntry>
+      <listEntry value="1410">@Strings.Time1410</listEntry>
+    </settingConfig>
+  </setting>
+</settings>

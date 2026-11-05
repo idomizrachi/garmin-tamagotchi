@@ -1,0 +1,30 @@
+<strings>
+  <string id="AppName">Little Companion</string>
+  <string id="WakeLabel">Wake time</string>
+  <string id="SleepyLabel">Evening wind-down</string>
+  <string id="BedLabel">Bedtime</string>
+  <string id="Time300">05:00</string>
+  <string id="Time330">05:30</string>
+  <string id="Time360">06:00</string>
+  <string id="Time390">06:30</string>
+  <string id="Time420">07:00</string>
+  <string id="Time450">07:30</string>
+  <string id="Time480">08:00</string>
+  <string id="Time510">08:30</string>
+  <string id="Time540">09:00</string>
+  <string id="Time570">09:30</string>
+  <string id="Time600">10:00</string>
+  <string id="Time1080">18:00</string>
+  <string id="Time1110">18:30</string>
+  <string id="Time1140">19:00</string>
+  <string id="Time1170">19:30</string>
+  <string id="Time1200">20:00</string>
+  <string id="Time1230">20:30</string>
+  <string id="Time1260">21:00</string>
+  <string id="Time1290">21:30</string>
+  <string id="Time1320">22:00</string>
+  <string id="Time1350">22:30</string>
+  <string id="Time1365">22:45</string>
+  <string id="Time1380">23:00</string>
+  <string id="Time1410">23:30</string>
+</strings>

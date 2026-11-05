@@ -1,0 +1,90 @@
+# Little Companion — v0.1
+
+A personal Garmin watch face built around one cozy teal hooded creature. Large
+24-hour time and date sit above the companion; running kilometres and daily steps
+sit at the lower sides, with today's Celsius high/low below them.
+
+Primary device: **Forerunner 570 47 mm**. Additional build targets are Forerunner
+570 42 mm, 965, and 970; device testing is still required for each.
+
+## Build and run
+
+Install Garmin's [Connect IQ SDK Manager](https://developer.garmin.com/connect-iq/sdk/)
+and download the target device from its Devices tab. Java is required by the compiler.
+The scripts use `CIQ_SDK` if set, the project's ignored `.tools/sdk` when present,
+or the SDK Manager's current SDK.
+
+```sh
+export DEVELOPER_KEY=/absolute/path/to/your/garmin/developer_key
+./scripts/build.sh                  # release build for fr57047mm
+./scripts/run.sh                    # build and launch in Garmin's simulator
+./scripts/test.sh                   # compile and execute behavior tests
+./scripts/build.sh fr57042mm        # optional smaller-screen target
+```
+
+The existing local signing key is the default when available. Its contents are
+never copied into the project. SDK downloads and build outputs are ignored by Git.
+
+The sideloadable file is `build/LittleCompanion-fr57047mm.prg`. Transfer it to the
+watch's `GARMIN/APPS` directory using your normal Garmin USB/MTP workflow, then
+choose **Little Companion** in the watch-face picker. This project does not publish
+or install itself on the watch.
+
+## Behavior
+
+- Wakes at 07:00, begins evening yawns at 20:30, and sleeps at 22:45 by default.
+- Morning coffee, idle blinks, occasional waves, stretches, and movement responses
+  vary in context-appropriate windows. No interaction or care is required.
+- Recorded Running activities receive running responses. Recorded Training
+  activities receive strength responses under the wearer's personal convention;
+  this does not distinguish strength from cardio subtypes.
+- New workouts earn a celebration across three distinct glances, followed by
+  roughly 45 minutes of recovery anchored to the workout end. Unseen workouts
+  can still be acknowledged later, without restarting recovery.
+- The device's step goal gets a bounded celebration. Quiet days never cause
+  negative behavior. Daily acknowledgment state survives reloads.
+- First installation seeds existing history rather than replaying old workouts.
+- Timers stop after a short gesture sequence or entry to low power. Always-on
+  shows only a small dim clock and sleeping sprite.
+
+Schedule settings are available through Garmin's app-properties mechanism. The
+supported ordering is wake time, evening wind-down, bedtime within the same day;
+invalid ordering leaves the last valid schedule in effect.
+
+## Data and performance
+
+Steps and native running distance are sampled no more than twice per minute.
+Weather is checked every 15 minutes while awake; history is checked at most every
+five minutes while awake, after the initial screen paints. No external weather
+service, API key, direct sensor stream, or custom background process is used.
+
+The native running total is used when the watch's first-day-of-week setting is
+Sunday. Otherwise the face computes a Sunday-based total from available local
+history. A bounded incomplete scan does not present a partial total as complete;
+history retention and sync behavior still require real-device validation.
+
+Missing readings display a dash. Yesterday's weather is not carried into today;
+scene conditions older than two hours are omitted. A cached forecast is not a
+guarantee of live weather or a weather service's accuracy.
+
+Sprites use small palette-based resources, with only the current full-size pose
+retained by the renderer. The 390-pixel target has its own reduced sprite assets.
+Sparse grass, pebbles, and stepped distant ridges use small drawing primitives;
+there is no full-screen background resource, buffer, or continuously moving scenery.
+Fonts are cached, device-provided Roboto Condensed; the clock and values use bold
+weights to match the accepted concept more closely.
+
+## Artwork
+
+The preview-only concept is in `docs/design/staggered-watch-face-concept.png`.
+The generated sprite source is `assets/source/companion-sheet.png`, created with
+the built-in image generation tool. Its prompt requested a 4×3 transparent sheet
+of the approved teal hooded character in twelve poses: idle, blink, wave,
+stretch/yawn, coffee, sip, walk, run, strength, celebration, water, and sleep.
+
+`python3 scripts/prepare_assets.py` mechanically slices and aligns the sheet,
+reduces it with nearest-neighbor sampling, and limits palettes using ImageMagick.
+It regenerates both display sizes and the small always-on resource.
+
+See [the design scope](docs/design/v0.1.md), [feasibility review](docs/design/feasibility.md),
+and [validation record](docs/design/validation.md) for accepted behavior and limits.

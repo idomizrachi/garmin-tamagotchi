@@ -1,0 +1,16 @@
+<drawables>
+  <bitmap id="Idle" filename="Idle.png" dithering="none"/>
+  <bitmap id="Blink" filename="Blink.png" dithering="none"/>
+  <bitmap id="Wave" filename="Wave.png" dithering="none"/>
+  <bitmap id="Stretch" filename="Stretch.png" dithering="none"/>
+  <bitmap id="Coffee" filename="Coffee.png" dithering="none"/>
+  <bitmap id="Sip" filename="Sip.png" dithering="none"/>
+  <bitmap id="Walk" filename="Walk.png" dithering="none"/>
+  <bitmap id="Run" filename="Run.png" dithering="none"/>
+  <bitmap id="Strength" filename="Strength.png" dithering="none"/>
+  <bitmap id="Celebrate" filename="Celebrate.png" dithering="none"/>
+  <bitmap id="Water" filename="Water.png" dithering="none"/>
+  <bitmap id="Sleep" filename="Sleep.png" dithering="none"/>
+  <bitmap id="AodSleep" filename="AodSleep.png" dithering="none"/>
+  <bitmap id="LauncherIcon" filename="LauncherIcon.png" dithering="none"/>
+</drawables>
