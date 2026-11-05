@@ -15,7 +15,7 @@ automatically, with brief gestures and supportive celebrations after activity.
 
 | Morning coffee | Quiet daytime |
 | :---: | :---: |
-| <img src="docs/design/scene-coffee.png" width="240" alt="Companion holding its morning coffee on the watch face"> | <img src="docs/design/preview-idle.png" width="240" alt="Companion standing comfortably in its tiny environment"> |
+| <img src="docs/design/scene-coffee.png" width="240" alt="Companion holding its morning coffee on the watch face"> | <img src="docs/design/preview-raised-fields.png" width="240" alt="Companion standing comfortably in its tiny environment"> |
 | A cozy coffee break, with an occasional sip. | Blinks, stretches, and sometimes notices you looking. |
 | **Running theme** | **Strength theme** |
 | <img src="docs/design/preview-running.png" width="240" alt="Companion in a running pose"> | <img src="docs/design/preview-strength.png" width="240" alt="Companion lifting a small dumbbell"> |

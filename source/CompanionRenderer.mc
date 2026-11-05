@@ -38,10 +38,10 @@ class CompanionRenderer {
         drawProp(dc, model.currentProp(now, pose));
         drawWeatherScene(dc, data.sceneCondition(now), clock.hour);
 
-        text(dc, 98, 311, valueFont, data.runKm == null ? "—" : data.runKm.format("%.1f"), WHITE);
-        text(dc, 98, 343, labelFont, "km / week", MUTED);
-        text(dc, 356, 311, valueFont, stepsText(data.steps), WHITE);
-        text(dc, 356, 343, labelFont, "steps", MUTED);
+        text(dc, 78, 233, valueFont, data.runKm == null ? "—" : data.runKm.format("%.1f"), WHITE);
+        text(dc, 78, 270, labelFont, "km / week", MUTED);
+        text(dc, 397, 233, valueFont, stepsText(data.steps), WHITE);
+        text(dc, 397, 270, labelFont, "steps", MUTED);
         text(dc, 227, 374, labelFont, "HI / LO  °C", MUTED);
         var weather = temperature(data.high) + " / " + temperature(data.low);
         text(dc, 227, 408, valueFont, weather, WHITE);
@@ -51,10 +51,10 @@ class CompanionRenderer {
         if (fontWidth == width) { return; }
         fontWidth = width;
         clockFont = font("RobotoCondensedBold", 132, Graphics.FONT_NUMBER_HOT);
-        dateFont = font("RobotoCondensedBold", 30, Graphics.FONT_XTINY);
-        labelFont = font("RobotoCondensedBold", 26, Graphics.FONT_XTINY);
-        valueFont = font("RobotoCondensedBold", 46, Graphics.FONT_SMALL);
-        aodFont = font("RobotoCondensedRegular", 68, Graphics.FONT_XTINY);
+        dateFont = font("RobotoCondensedBold", 32, Graphics.FONT_XTINY);
+        labelFont = font("RobotoCondensedBold", 28, Graphics.FONT_XTINY);
+        valueFont = font("RobotoCondensedBold", 50, Graphics.FONT_SMALL);
+        aodFont = font("RobotoCondensedRegular", 72, Graphics.FONT_XTINY);
     }
 
     private function font(face, size, fallback) {
@@ -81,9 +81,9 @@ class CompanionRenderer {
         var night = hour >= 20 || hour < 7;
         dc.setColor(night ? 0x172722 : 0x233D34, Graphics.COLOR_TRANSPARENT);
         // Low stepped ridges frame the stage without crossing any data fields.
-        dc.fillRectangle(px(122), px(277), px(20), px(3));
-        dc.fillRectangle(px(130), px(273), px(13), px(4));
-        dc.fillRectangle(px(137), px(269), px(9), px(4));
+        dc.fillRectangle(px(134), px(277), px(20), px(3));
+        dc.fillRectangle(px(142), px(273), px(13), px(4));
+        dc.fillRectangle(px(149), px(269), px(9), px(4));
         dc.fillRectangle(px(307), px(272), px(20), px(3));
         dc.fillRectangle(px(307), px(266), px(11), px(6));
         dc.fillRectangle(px(310), px(262), px(5), px(4));
@@ -96,7 +96,7 @@ class CompanionRenderer {
         dc.fillRectangle(px(292), px(314), px(3), px(9));
         dc.fillRectangle(px(288), px(311), px(3), px(7));
         dc.fillRectangle(px(290), px(319), px(9), px(4));
-        // Muted pebbles connect the sparse ground line to the field arcs.
+        // Muted pebbles frame the sparse ground line.
         dc.setColor(night ? 0x333C38 : 0x59635A, Graphics.COLOR_TRANSPARENT);
         dc.fillRectangle(px(143), px(331), px(9), px(3));
         dc.fillRectangle(px(145), px(329), px(5), px(2));

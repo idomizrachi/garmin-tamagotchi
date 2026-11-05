@@ -79,3 +79,13 @@ entry point now honors low-power transitions as well, rather than trying to
 leave a full face visible during always-on mode. The earlier screenshots and
 performance measurements describe the initial font sizes; larger text still
 needs the wearer's on-watch readability assessment.
+
+## Raised side fields
+
+Weekly kilometres and daily steps now flank the companion at the marked
+mid-screen positions. The main clock stays unchanged. Date, labels, numeric
+fields, and the always-on clock increase to 32, 28, 50, and 72 nominal pixels.
+All field arcs remain removed, and the left ridge moves inward to clear the
+weekly label. Both Forerunner 570 sizes and all five scene previews compiled.
+The 47 mm idle scene was visually checked with 24.6 km and 6,420 steps; see
+`preview-raised-fields.png`. These are fixture readings.
