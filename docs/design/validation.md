@@ -28,7 +28,7 @@ Validated on 2026-11-05 with Connect IQ SDK 9.3.0 and simulator device API 6.0.3
 
 ## Behavior tests
 
-1. Late workout wind-down is bounded and yields to sleep.
+1. Late workouts do not delay the scheduled bedtime.
 2. A missed workout is acknowledged without restarting physical recovery.
 3. Initial installation seeds old workouts without replaying celebrations.
 4. Persistence prevents a repeated workout from resetting its celebration count.

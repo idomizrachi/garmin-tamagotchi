@@ -6,6 +6,7 @@ class CompanionRenderer {
     private var sprite;
     private var spriteId = -1;
     private var aod;
+    private const EATING_POSE = 12;
     private const WHITE = 0xEEF5F0;
     private const MUTED = 0xAABCB4;
     private var scale = 1.0;
@@ -69,10 +70,23 @@ class CompanionRenderer {
                 Rez.Drawables.Stretch, Rez.Drawables.Coffee, Rez.Drawables.Sip,
                 Rez.Drawables.Walk, Rez.Drawables.Run, Rez.Drawables.Strength,
                 Rez.Drawables.Celebrate, Rez.Drawables.Water, Rez.Drawables.Sleep];
-            sprite = WatchUi.loadResource(ids[pose]); spriteId = pose;
+            sprite = WatchUi.loadResource(ids[pose == EATING_POSE ? 0 : pose]); spriteId = pose;
         }
         // Resources have size-specific overrides; no bitmap scaling at runtime.
         dc.drawBitmap((dc.getWidth() - sprite.getWidth()) / 2, px(324) - sprite.getHeight(), sprite);
+        if (pose == EATING_POSE) { drawMeal(dc); }
+    }
+
+    private function drawMeal(dc) as Void {
+        // Pixel bowl and spoon over the idle pose, shared by both display sizes.
+        dc.setColor(0xD6A859, Graphics.COLOR_TRANSPARENT);
+        dc.fillRectangle(px(208), px(280), px(38), px(7));
+        dc.fillRectangle(px(212), px(287), px(30), px(8));
+        dc.fillRectangle(px(217), px(295), px(20), px(4));
+        dc.setColor(0xEEF5F0, Graphics.COLOR_TRANSPARENT);
+        dc.fillRectangle(px(211), px(278), px(32), px(3));
+        dc.fillRectangle(px(244), px(261), px(3), px(19));
+        dc.fillRectangle(px(241), px(256), px(9), px(7));
     }
 
     private function drawEnvironment(dc, hour) as Void {

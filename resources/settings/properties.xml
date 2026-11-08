@@ -1,5 +1,5 @@
 <properties>
   <property id="WakeMinute" type="number">420</property>
-  <property id="SleepyMinute" type="number">1230</property>
-  <property id="BedMinute" type="number">1365</property>
+  <property id="SleepyMinute" type="number">1200</property>
+  <property id="BedMinute" type="number">1260</property>
 </properties>

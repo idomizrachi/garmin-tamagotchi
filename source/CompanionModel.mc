@@ -15,6 +15,7 @@ class CompanionModel {
     const CELEBRATE = 9;
     const WATER = 10;
     const SLEEP = 11;
+    const EAT = 12;
 
     var day = 0;
     var workoutStart = 0;
@@ -30,8 +31,8 @@ class CompanionModel {
     var prop = 0; // 0 none, 1 mug, 2 bottle
     var propUntil = 0;
     var wakeMinute = 420;
-    var sleepyMinute = 1230;
-    var bedMinute = 1365;
+    var sleepyMinute = 1200;
+    var bedMinute = 1260;
     var dirty = false;
     var wakePose = 0;
 
@@ -81,17 +82,14 @@ class CompanionModel {
     }
 
     function isNight(minute, now) {
-        if (minute < wakeMinute) { return true; }
-        if (minute < bedMinute) { return false; }
-        // Late exercise gets a bounded wind-down; ordinary movement cannot delay sleep.
-        return !(workoutEnd > 0 && now >= workoutEnd && now - workoutEnd < 1800 && minute < bedMinute + 30);
+        return minute < wakeMinute || minute >= bedMinute;
     }
 
     function beginGlance(now, minute) as Void {
         // Repeated lifecycle callbacks within one glance do not spend celebrations.
         if (lastWake > 0 && now - lastWake >= 0 && now - lastWake < 45) { return; }
         lastWake = now; wakePose = IDLE;
-        if (isNight(minute, now)) { return; }
+        if (isNight(minute, now) || minute >= sleepyMinute || (minute >= 720 && minute < 780)) { return; }
         if (workoutCheers > 0) {
             wakePose = CELEBRATE; workoutCheers -= 1; dirty = true;
         } else if (stepCheers > 0) {
@@ -103,6 +101,8 @@ class CompanionModel {
 
     function pose(now, minute, frame, active) {
         if (isNight(minute, now)) { return SLEEP; }
+        if (minute >= sleepyMinute) { return STRETCH; } // yawn/stretch sprite
+        if (minute >= 720 && minute < 780) { return EAT; }
         if (active && now - lastWake >= 0 && now - lastWake < 4 && wakePose != IDLE) {
             return wakePose;
         }
@@ -112,7 +112,6 @@ class CompanionModel {
             if (recoverySlot == 1) { return workoutSport == 1 ? RUN : STRENGTH; }
             return WATER;
         }
-        if (minute >= sleepyMinute) { return STRETCH; } // yawn/stretch sprite
         if (minute < wakeMinute + 20) { return STRETCH; }
         if (now < movementUntil) { return WALK; }
         var slot = ((now / 300).toNumber() + day) % 8;
@@ -128,7 +127,7 @@ class CompanionModel {
 
     function currentProp(now, poseId) {
         // A held prop and a lingering prop never appear simultaneously.
-        if (poseId == COFFEE || poseId == SIP || poseId == WATER || poseId == SLEEP || poseId == STRENGTH) { return 0; }
+        if (poseId == EAT || poseId == COFFEE || poseId == SIP || poseId == WATER || poseId == SLEEP || poseId == STRENGTH) { return 0; }
         if (workoutEnd > 0 && now >= workoutEnd && now - workoutEnd < 3600) { return 2; }
         if (now < propUntil) { return prop; }
         return 0;

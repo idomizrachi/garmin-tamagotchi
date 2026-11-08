@@ -93,7 +93,9 @@ setting if needed. Copy only the normal release `.prg`, not a `performance-` or
 
 ## Behavior
 
-- Wakes at 07:00, begins evening yawns at 20:30, and sleeps at 22:45 by default.
+- Wakes at 07:00, begins evening yawns at 20:00, and sleeps at 21:00 by default.
+- Eats lunch from 12:00 until 13:00 local time. Lunch and evening sleepiness take
+  priority over activity reactions; bedtime always starts sleep.
 - Morning coffee, idle blinks, occasional waves, stretches, and movement responses
   vary in context-appropriate windows. No interaction or care is required.
 - Recorded Running activities receive running responses. Recorded Training

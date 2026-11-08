@@ -18,13 +18,13 @@ The companion's mostly cozy disposition, punctuated by occasional mischievous be
 The companion celebrates movement and milestones while remaining content on quiet days. Missed goals and inactivity never cause disappointment, guilt, or pressure from the companion.
 
 **Daily routine**:
-The companion's progression through waking, daytime habits, evening wind-down, and sleep. Habits vary spontaneously within loose, context-appropriate windows rather than following a fixed timetable; recent wearer activity can temporarily reshape the routine, but the companion eventually transitions to sleep.
+The companion's progression through waking, daytime habits, evening wind-down, and sleep. Habits vary spontaneously within loose, context-appropriate windows rather than following a fixed timetable; recent wearer activity can temporarily reshape the routine outside lunch and the evening schedule.
 
 **Sleep schedule**:
-The wearer's chosen usual waking and sleeping times for the companion. Recent activity may allow a short wind-down before sleep; ordinary movement does not indefinitely postpone bedtime, and evening sleepiness is distinct from bedtime.
+The wearer's chosen usual waking and sleeping times for the companion. Evening sleepiness is distinct from bedtime. Activity does not delay bedtime.
 
 **Usual sleep window**:
-The wearer's usual bedtime is between 22:30 and 23:00, with waking at 07:00. The companion remains asleep during the night rather than greeting the wearer; the wearer's sleep focus normally hides the face overnight.
+The companion becomes sleepy at 20:00 and sleeps from 21:00 until waking at 07:00. It eats lunch from 12:00 until 13:00 local time. The companion remains asleep during the night rather than greeting the wearer; the wearer's sleep focus normally hides the face overnight.
 
 **Modern pixel art**:
 The companion's visual style: deliberate pixel shapes with clean silhouettes, expressive poses, and a restrained palette, blending nostalgic pixel character with a contemporary finish.

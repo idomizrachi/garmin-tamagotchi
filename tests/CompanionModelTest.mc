@@ -1,10 +1,11 @@
 import Toybox.Test;
 
 (:test)
-function lateWorkoutYieldsToSleep(logger) {
+function lateWorkoutDoesNotDelaySleep(logger) {
     var m = new CompanionModel(); m.rollover(20261105); m.finishHistorySeed();
     m.observeWorkout(10000, 13000, 1, 13100);
-    Test.assert(!m.isNight(1380, 13100));
+    Test.assert(!m.isNight(1259, 13100));
+    Test.assert(m.isNight(1260, 13100));
     Test.assert(m.isNight(1400, 15000));
     Test.assert(m.isNight(180, 15000));
     return true;
@@ -105,10 +106,33 @@ function heldPropsDoNotDuplicateLingeringProps(logger) {
 function invalidSettingsAndCorruptStorageAreIgnored(logger) {
     var m = new CompanionModel(); m.setSchedule(1400, 100, 50);
     Test.assertEqual(m.wakeMinute, 420);
-    Test.assertEqual(m.bedMinute, 1365);
+    Test.assertEqual(m.bedMinute, 1260);
     m.restore({"day" => "broken"});
     Test.assertEqual(m.day, 0);
     m.setSchedule(390, 1200, 1380);
     Test.assertEqual(m.wakeMinute, 390);
+    return true;
+}
+
+(:test)
+function scheduledMealAndEveningBoundaries(logger) {
+    var m = new CompanionModel(); m.rollover(20261105);
+    Test.assert(m.pose(20000, 719, 0, false) != m.EAT);
+    Test.assertEqual(m.pose(20000, 720, 0, false), m.EAT);
+    Test.assertEqual(m.pose(20000, 779, 2, true), m.EAT);
+    Test.assert(m.pose(20000, 780, 0, false) != m.EAT);
+    Test.assert(m.pose(20000, 1199, 0, false) != m.SLEEP);
+    Test.assertEqual(m.pose(20000, 1200, 0, true), m.STRETCH);
+    Test.assertEqual(m.pose(20000, 1259, 0, true), m.STRETCH);
+    Test.assertEqual(m.pose(20000, 1260, 0, true), m.SLEEP);
+    Test.assertEqual(m.pose(20000, 419, 0, true), m.SLEEP);
+    Test.assertEqual(m.pose(20000, 420, 0, true), m.STRETCH);
+    m.finishHistorySeed(); m.observeWorkout(18000, 19900, 1, 20000);
+    m.beginGlance(20000, 720);
+    Test.assertEqual(m.workoutCheers, 3);
+    Test.assertEqual(m.pose(20000, 720, 0, true), m.EAT);
+    Test.assertEqual(m.currentProp(20000, m.EAT), 0);
+    Test.assertEqual(m.pose(20000, 1200, 0, true), m.STRETCH);
+    Test.assertEqual(m.pose(20000, 1260, 0, true), m.SLEEP);
     return true;
 }
