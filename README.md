@@ -42,6 +42,17 @@ of these scenes. Workout reactions appear when you return to the
 watch face. After the celebration, the companion drinks water, stretches, and
 rests before returning to its routine.
 
+The daily routine also includes these graphics (times are local, with the default
+sleep schedule):
+
+| Scene | Graphic | Time |
+| --- | --- | --- |
+| Lunch | Idle companion with a pixel bowl and spoon drawn over it | 12:00–13:00 |
+| Sleepy evening | Existing stretch/yawn sprite | 20:00–21:00 |
+| Sleeping | Existing sleeping sprite | 21:00–07:00 |
+
+Lunch uses a new bowl-and-spoon overlay rather than a separate character sprite.
+
 Always-on keeps just the dim time and a small resting companion:
 
 <img src="docs/design/simulator-always-on.png" width="200" alt="Minimal always-on face with a small dim clock and resting companion">
@@ -144,6 +155,11 @@ The generated sprite source is `assets/source/companion-sheet.png`, created with
 the built-in image generation tool. Its prompt requested a 4×3 transparent sheet
 of the approved teal hooded character in twelve poses: idle, blink, wave,
 stretch/yawn, coffee, sip, walk, run, strength, celebration, water, and sleep.
+
+The eating graphic combines the idle sprite with a bowl and spoon drawn by
+`CompanionRenderer.drawMeal`; it is available in both display sizes without adding
+a thirteenth image to the source sheet. Sleepiness reuses stretch/yawn, and bedtime
+uses the existing sleep sprite.
 
 `python3 scripts/prepare_assets.py` mechanically slices and aligns the sheet,
 reduces it with nearest-neighbor sampling, and limits palettes using ImageMagick.
